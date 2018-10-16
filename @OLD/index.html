@@ -1,0 +1,178 @@
+</!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Udemy - VueJS 2</title>
+	<script src="vue.js"></script>
+	<style type="text/css">
+		.demo {
+			width: 100px;
+			height: 100px;
+			background-color: gray;
+			display: inline-block;
+			margin: 10px;
+		}
+		.red {
+			background-color: red;
+		}
+		.green {
+			background-color: green;
+		}
+
+		.blue {
+			background-color: blue;
+		}
+
+		.teste {
+			background-color: pink;
+			width: 100px;
+			height: 100px;
+
+		}
+		.testeBB {
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- <input type="text" v-on:input="changeTitle"> -->
+		<h1 v-once>{{ title }}</h1>
+		<p>{{ sayHello() }} - <a v-bind:href="link">Access Google</a></p>
+		<hr>
+		<p v-html="finishedLink"></p>
+		<hr>
+		<button v-on:click="increase(2, $event)">Click me</button>
+		<!-- <button v-on:click="counter+=2">Click me +2</button> -->
+		<p>{{ counter > 10 ? 'Greater than 10' : 'Smaller than 10' }}</p>
+		<p v-on:mousemove="updateCoordinates">Coordinates:{{ x }} / {{ y }} - 
+			<span v-on:mousemove.stop="">DEAD SPOT</span>
+		</p>
+		<hr>
+		<input type="text" v-on:keyup.enter="alertMe">
+		<hr>
+		<input type="text" v-model="name">
+		<p>{{ name }}</p>
+		<hr>
+		<button v-on:click="counter++">Increase</button>
+		<button v-on:click="counter--">Decrease</button>
+		<button v-on:click="secondCounter++">Second Button</button>
+		<p>{{ counter }} | {{ secondCounter }}</p>
+		<p>{{ result() }} | {{ output }}</p>
+		<hr>
+		<button @click="changeLink">Click to Change Link</button>
+		<a :href="link">Link</a>
+		<hr>
+		<!-- Class 26/27. Dynamic Styling w/ CSS Classes  -->
+		<div class="demo" 
+			@click="attachRed = !attachRed"
+			:class="divClasses">
+			
+		</div>
+		<div class="demo"
+			@click="attachRed = !attachRed"
+			:class="{red: attachRed}"></div>
+		<div class="demo" :class="[color, {red: !attachRed}]"></div>
+
+		<div class="demo" :style="[myStyle, {height: width + 'px'}]"></div>
+		
+		<input type="text" v-model="color">
+		<input type="text" v-model="width">
+		<hr>
+		<button @click="clicou">AAAAAA</button>
+		<div class="teste" :class="setColor" ></div>
+	</div>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				title: 'Hello World!',
+				link: 'http://google.com',
+				finishedLink: '<a href="http://google.com">Google</a>',
+				
+				counter: 0,
+				secondCounter: 0,
+				
+				x: '',
+				y: '',
+				name: 'Tadashi',
+
+				changeLink: 'asd',
+				link: 'www.google.com',
+
+				attachRed: false,
+				color: 'green',
+				width: '',
+
+				attachTeste: false
+			},
+			computed: {
+				output(){
+					console.log("Computed");
+					return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+				},
+				divClasses: function() {
+					return {
+						red: this.attachRed,
+						blue: !this.attachRed
+					}
+				},
+				myStyle: function() {
+					return {
+						backgroundColor: this.color,
+						width: this.width + 'px'
+					}
+				},
+				setColor: function() {
+					
+					return {
+						testeBB: this.attachTeste
+					}
+				}
+			},
+			watch: {
+				counter: function(value){
+					let vm = this;
+					setTimeout(function(){
+						vm.counter = 0;
+					}, 2000);
+				},
+				attachTeste: function(value) {
+					let vm = this;
+					setInterval(function(){
+						vm.setColor;
+						console.log('opa');
+					}, 2000);
+				}
+			},
+			methods: {
+				/*
+				changeTitle: function(event) {
+					this.title = event.target.value;
+				}
+				*/
+				result(){
+					console.log("Methods");
+					return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';	
+				},
+				sayHello: function() {
+					return this.title = 'Hello!';
+				},
+				increase(step, event) {
+					this.counter += step;
+				},
+				updateCoordinates(event) {
+					this.x = event.clientX;
+					this.y = event.clientY;
+				},
+				alertMe() {
+					alert('alert');
+				},
+				clicou() {
+					return this.attachTeste = !this.attachTeste
+				}
+			}
+		});
+	</script>
+</body>
+</html>

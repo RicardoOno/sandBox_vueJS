@@ -1,0 +1,65 @@
+<script src="vue.js"></script>
+<meta charset="UTF-8" />
+<div id="exercise">
+    <h1 v-bind:style="colors" v-on:click="change">Hello World!</h1>
+    <p v-bind:style="phar"  v-bind:class="font" v-on:click="fontClick">1 Lorem Ipsum dollar suits metter</p>
+    <p v-bind:style="phar" v-bind:class="stylizeng">2 Lorem Ipsum dollar suits metter</p>
+    <p v-bind:style="phar" v-bind:class="cl">3 Lorem Ipsum dollar suits metter</p>
+    <input type="text" v-model="stylizeng">           
+</div>
+<script>
+    new Vue({
+        el: '#exercise',
+        data: {
+            colors: {
+                backgroundColor: 'black',
+                color: 'white',
+                fontSize: '3em',
+                textAlign: 'center'
+            },
+            phar: {
+                fontSize: '1.9em',
+                textAlign: 'center',
+            },
+            cl: {
+                red: true,
+                text: true
+            },
+            font: {
+                big: false,
+                normal: true
+            },
+            stylizeng: ''      
+        },
+        methods: {
+            change: function() {
+                this.colors.backgroundColor = 'pink';
+            },
+            fontClick: function() {
+                let vm = this;
+                setInterval(function(){
+                    vm.font.big = !vm.font.big;
+                    vm.font.normal = !vm.font.normal;
+                }, 1000);
+            }
+        }
+    });
+</script>
+<style>
+    #exercise {
+        width: 90%;
+        margin-left: 5%;
+    }
+    .red {
+        background-color: red;
+    }
+    .text {
+        color: yellow;
+    }
+    .normal {
+        color: #033212;
+    }
+    .big {
+        color: #644276;
+    }
+</style>

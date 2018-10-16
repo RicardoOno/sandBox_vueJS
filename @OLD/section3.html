@@ -1,0 +1,29 @@
+<script src="vue.js"></script>
+<meta charset="UTF-8" />
+<div id="app">
+
+	<button v-on:click="show = !show">Switch</button>
+	<input type="text" v-model="type">
+	<p v-if="type === 'A'">Do you also see me?</p>
+	<p v-else-if="type === 'B'">Now you see me!</p>
+	<p v-else-if="type === 'C'">Now you see me!</p>
+	<p v-else>You can see me</p>
+	<template v-if="show">
+		<h1>Heading</h1>
+		<p>Inside a template</p>
+	</template>
+	<p v-show="show">Lorem ipssum dollar</p>
+</div>
+<script>
+	new Vue({
+		el: '#app',
+		data: {
+			type: '',
+			show: false
+
+		},
+		methods: {
+
+		}
+	})
+</script>
