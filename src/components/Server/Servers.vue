@@ -1,14 +1,10 @@
 <template>
     <div class="col-xs-12 col-sm-6">
         <ul class="list-group">
-            <li
-                    class="list-group-item">
-                <app-each-server
-                        v-for="server in servers"
-                        :id="server.id"
-                        :status="server.status">
-                </app-each-server>
-            </li>
+            <app-each-server
+                    v-for="server in servers"
+                    :server="server">
+            </app-each-server>
         </ul>
     </div>
 </template>
@@ -24,10 +20,10 @@
         data: function () {
             return {
                 servers: [
-                    {id: 1, status: 'Normal'},
+                    {id: 1, status: 'Blocked'},
                     {id: 2, status: 'Critical'},
-                    {id: 3, status: 'Unknown'},
-                    {id: 4, status: 'Normal'},
+                    {id: 3, status: 'Unknow'},
+                    {id: 4, status: 'Disable'},
                     {id: 5, status: 'Offline'},
                 ]
             };
