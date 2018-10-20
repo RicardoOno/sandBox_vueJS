@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# sandBox_vueJS
-My Sandbox of testing VueJS
-=======
 # vue-cli
 
 > A Vue.js project
@@ -18,6 +14,3 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
->>>>>>> anwser_atv114
