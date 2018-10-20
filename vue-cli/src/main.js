@@ -4,17 +4,7 @@ import App from './App.vue'
 
 //Vue.component('app-server', Home);
 
-export const eventBus = new Vue({
-    methods: {
-        changeAge(age) {
-            this.$emit('ageWasEdit', age);
-        },
-        changeStatus(status) {
-            this.$emit('statusChanged', status);
-        }
-    }
-});
-
+export const serverBus = new Vue();
 new Vue({
     el: '#app',
     render: h => h(App)
