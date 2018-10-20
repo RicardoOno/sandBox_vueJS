@@ -1,45 +1,45 @@
-<!--  my part
 <template>
- <app-server></app-server>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <button @click="selectedComponent = 'appQuote'">Quote</button>
+                <button @click="selectedComponent = 'appAuthor'">Author</button>
+                <button @click="selectedComponent = 'appNew'">New</button>
+                <hr>
+                <p>{{ selectedComponent }}</p>
+                <keep-alive>
+                    <component :is="selectedComponent">
+                        <p slot="title">Default</p>
+                    </component>
+                </keep-alive>
+                <hr>
+                <!-- app-quote>
+                    <h2 slot="title"> {{ quoteTitle }}</h2>
+                    <p>A wonderful Quote</p>
+                </app-quote -->
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
+    import Quote from './components/Quote.vue';
+    import Author from './components/Author.vue';
+    import New from './components/New.vue';
 
-</script>
-
-<style>
-
-</style>
--->
-<template>
- <div class="container">
-  <app-header></app-header>
-  <hr>
-  <div class="row">
-   <app-server></app-server>
-   <app-server-details></app-server-details>
-  </div>
-  <hr>
-   <app-footer></app-footer>
- </div>
-</template>
-
-<script>
-
-
-    import Servers from './components/Server/Servers.vue'
-    import Footer from './components/Shared/Footer.vue'
-    import Header from './components/Shared/Header.vue'
-    import ServerDetails from './components/Server/ServerDetails.vue'
 
     export default {
+        data: function(){
+            return {
+                quoteTitle: 'The Quote',
+                selectedComponent: 'appQuote'
+            }
+        },
         components: {
-            'app-server': Servers,
-            'app-footer': Footer,
-            'app-header': Header,
-            'app-server-details': ServerDetails
+            appQuote: Quote,
+            appAuthor: Author,
+            appNew: New
         }
-
     }
 
 </script>
