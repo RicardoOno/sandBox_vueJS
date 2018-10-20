@@ -13,7 +13,7 @@
             };
         },
         destroyed(){
-            /* if you remove the keep-alive in App.vue, this log will show */
+            /* if you remove the keep-alive in App_old.vue, this log will show */
             console.log("Destroyed");
         },
         deactivated(){
