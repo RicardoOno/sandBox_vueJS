@@ -9,8 +9,8 @@ export const eventBus = new Vue({
         changeAge(age) {
             this.$emit('ageWasEdit', age);
         },
-        changeStatus(status) {
-            this.$emit('statusChanged', status);
+        changeStatus(info) {
+            this.$emit('statusChanged', info);
         }
     }
 });
